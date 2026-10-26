@@ -4,7 +4,7 @@ Ce dépôt contient la suite de tests unitaires écrite en **TypeScript** pour l
 
 ## Vue d'ensemble du Contrat
 
-Le contrat gère un processus de vote sécurisé et séquentiel divisé en plusieurs étapes clés (`WorkflowStatus`) :
+Le contrat gère un processus de vote sécurisé et séquentiel divisé en plusieurs étapes clés (`WorkflowStatus`) :  
 0. **RegisteringVoters** : Enregistrement des électeurs par l'owner.
 1. **ProposalsRegistrationStarted** : Début de l'enregistrement des propositions.
 2. **ProposalsRegistrationEnded** : Fin de l'enregistrement des propositions.
