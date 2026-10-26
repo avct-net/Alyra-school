@@ -25,29 +25,16 @@ Pour optimiser la lisibilité et éviter la duplication de code, les tests utili
 Les tests sont regroupés par contextes fonctionnels (`describe`) :
 
 *   **Deployment** : Vérifie la bonne initialisation du contrat (adresse de l'owner et statut initial à `RegisteringVoters`).
-*   **Voters Registration** : Valide que seul l'owner peut ajouter des électeurs et que l'événement d'inscription est correctement émis.
+*   **Voters Registration** : Valide que seul l'owner peut ajouter des électeurs et que l'événement d'inscription est correctement émis, Doit permettre au propriétaire d'ajouter un votant et d'émettre l'événement, doit rejeter l'ajout si le votant est déjà inscrit, doit rejeter l'ajout si le WorkflowStatus n'est pas RegisteringVoters
+*   **Proposals** : Doit rejeter les propositions si la session n’est pas ouverte, ne doit pas permettre à une personne qui n’est pas propriétaire d’inscrire un électeur, doit refuser une proposition vide, doit permettre à un électeur inscrit d’ajouter une proposition valide
+* **Voting session** : Doit interdire le vote aux personnes non inscrites, doit enregistrer correctement le vote et incrémenter le compteur, doit interdire de voter deux fois, doit rejeter le vote portant sur une proposition inexistante
+* **Vote tallying** : Doit identifier le véritable vainqueur après le vote.
 
 ## Lancement des Tests
-
-### Prérequis
-
-Assurez-vous d'avoir installé les dépendances du projet :
-```bash
-npm install
-# ou
-yarn install
-```
-
-### Exécuter la suite de tests
 
 Pour lancer les tests unitaires via Hardhat, exécutez la commande suivante dans votre terminal :
 
 ```bash
-npx hardhat test
-```
-
-Pour générer un rapport de couverture de code (si `solidity-coverage` est configuré) :
-```bash
-npx hardhat coverage
+npx hardhat test ./test/Voting.ts
 ```
 
